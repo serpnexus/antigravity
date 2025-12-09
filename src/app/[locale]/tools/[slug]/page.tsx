@@ -4,6 +4,7 @@ import { getToolContent, getAllTools } from '@/lib/wordpress';
 import { generateSEOMetadata, JsonLd } from '@/components/seo/SEOHead';
 import { generateToolSchema } from '@/lib/seo';
 import WordPressContent from '@/components/content/WordPressContent';
+import StylishTextTool from '@/components/tools/stylish-text/ToolInterface';
 
 interface ToolPageProps {
     params: Promise<{ locale: string; slug: string }>;
@@ -87,17 +88,21 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
                         )}
                     </header>
 
-                    {/* Tool Interface - This is where the actual tool component would go */}
+                    {/* Tool Interface */}
                     <div className="card" style={{ marginBottom: '3rem', padding: '2rem' }}>
-                        <div style={{ textAlign: 'center', color: 'var(--foreground-muted)' }}>
-                            <p>Tool interface component goes here</p>
-                            <p style={{ fontSize: '0.875rem' }}>
-                                Create a specific component for this tool at:<br />
-                                <code style={{ background: 'var(--card-bg)', padding: '0.25rem 0.5rem', borderRadius: '4px' }}>
-                                    src/components/tools/{slug}/ToolInterface.tsx
-                                </code>
-                            </p>
-                        </div>
+                        {slug === 'stylish-text' ? (
+                            <StylishTextTool />
+                        ) : (
+                            <div style={{ textAlign: 'center', color: 'var(--foreground-muted)' }}>
+                                <p>Tool interface not found for "{slug}"</p>
+                                <p style={{ fontSize: '0.875rem' }}>
+                                    Create a specific component for this tool at:<br />
+                                    <code style={{ background: 'var(--card-bg)', padding: '0.25rem 0.5rem', borderRadius: '4px' }}>
+                                        src/components/tools/{slug}/ToolInterface.tsx
+                                    </code>
+                                </p>
+                            </div>
+                        )}
                     </div>
 
                     {/* Content from WordPress */}
