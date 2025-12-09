@@ -1,0 +1,61 @@
+.page {
+    padding: 4rem 0 6rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.updated {
+    color: var(--foreground-muted);
+    font-size: 0.95rem;
+}
+
+.content {
+    line-height: 1.8;
+}
+
+.section {
+    margin-bottom: 2.5rem;
+}
+
+.section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+}
+
+.section p {
+    color: var(--foreground-muted);
+    margin-bottom: 1rem;
+}
+
+.section ul {
+    color: var(--foreground-muted);
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.section li {
+    margin-bottom: 0.5rem;
+}
+
+.contactEmail a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.contactEmail a:hover {
+    text-decoration: underline;
+}

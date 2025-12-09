@@ -1,0 +1,19 @@
+.footer {
+    border-top: 1px solid var(--card-border);
+    padding: 3rem 0;
+    background: var(--background);
+    margin-top: auto;
+    /* Push to bottom if flex column */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copy,
+.text {
+    color: var(--foreground-muted);
+    font-size: 0.9rem;
+}

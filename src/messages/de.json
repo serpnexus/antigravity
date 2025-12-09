@@ -1,0 +1,11 @@
+{
+    "HomePage": {
+        "title": "Willkommen auf unserer mehrsprachigen Seite",
+        "description": "Premium Next.js + WordPress Integration"
+    },
+    "Navigation": {
+        "home": "Startseite",
+        "tools": "Werkzeuge",
+        "blog": "Blog"
+    }
+}
