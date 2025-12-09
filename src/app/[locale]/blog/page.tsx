@@ -1,6 +1,6 @@
 import { Link } from '@/navigation';
 import { getPosts } from '@/lib/wordpress';
-import Image from 'next/image';
+import { truncateExcerpt } from '@/lib/seo';
 
 export default async function BlogListingPage() {
     const posts = await getPosts();
@@ -37,10 +37,9 @@ export default async function BlogListingPage() {
                                     {post.title}
                                 </Link>
                             </h2>
-                            <div
-                                dangerouslySetInnerHTML={{ __html: post.excerpt }}
-                                style={{ color: 'var(--foreground-muted)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1rem' }}
-                            />
+                            <p style={{ color: 'var(--foreground-muted)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1rem' }}>
+                                {truncateExcerpt(post.excerpt, 120)}
+                            </p>
                             <Link
                                 href={`/blog/${post.slug}`}
                                 className="btn"

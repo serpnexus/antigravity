@@ -1,0 +1,14 @@
+# Environment Variables
+
+# WordPress GraphQL endpoint
+NEXT_PUBLIC_WORDPRESS_API_URL=https://your-wordpress-site.com/graphql
+
+# WordPress REST API endpoint  
+NEXT_PUBLIC_WORDPRESS_REST_URL=https://your-wordpress-site.com/wp-json
+
+# Site configuration
+NEXT_PUBLIC_SITE_URL=https://your-site-domain.com
+NEXT_PUBLIC_SITE_NAME=AntiGravity
+
+# Revalidation secret (must match WordPress plugin setting)
+REVALIDATION_SECRET=your-secret-token-here

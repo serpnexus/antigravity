@@ -226,22 +226,39 @@ class AntiGravity_Revalidate {
         $terms = wp_get_post_terms($post->ID, 'language', ['fields' => 'slugs']);
         $lang = !empty($terms) ? $terms[0] : 'en';
 
+        // For multilingual content, revalidate all language versions
+        $languages = ['en', 'es', 'fr', 'de'];
+
         if ($post_type === 'post') {
             // Blog post - revalidate single post + listing
             $paths[] = "/{$lang}/blog/{$post->post_name}";
             $paths[] = "/{$lang}/blog";
-        } elseif ($post_type === 'page') {
-            // Page - revalidate by slug
-            $paths[] = "/{$lang}/{$post->post_name}";
+        } elseif ($post_type === 'page' || $post_type === 'ag_page') {
+            // Page - revalidate by slug for all languages
+            foreach ($languages as $l) {
+                $paths[] = "/{$l}/{$post->post_name}";
+            }
             
             // If it's the front page
             if ($post->ID === (int) get_option('page_on_front')) {
-                $paths[] = "/{$lang}";
+                foreach ($languages as $l) {
+                    $paths[] = "/{$l}";
+                }
+            }
+        } elseif ($post_type === 'ag_tool') {
+            // Tool page - revalidate for all languages
+            foreach ($languages as $l) {
+                $paths[] = "/{$l}/tools/{$post->post_name}";
+                $paths[] = "/{$l}/tools"; // Also revalidate tools listing
             }
         }
 
-        return $paths;
+        // Always revalidate sitemap
+        $paths[] = '/sitemap.xml';
+
+        return array_unique($paths);
     }
+
 
     /**
      * Send revalidation request to Next.js
